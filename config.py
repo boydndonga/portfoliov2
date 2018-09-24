@@ -1,6 +1,7 @@
 
 class Config:
-    pass
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    CSRF_ENABLED = False
 
 class ProdConfig(Config):
     pass
