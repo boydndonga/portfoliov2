@@ -5,16 +5,15 @@ class Config:
     CSRF_ENABLED = False
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DB')
+    DEBUG = True
 
 class TestConfig(Config):
     TESTING = True
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DB')
 
-class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DB')
-    DEBUG = True
+   
 
-config_options ={"production":ProdConfig,"default":DevConfig,"testing":TestConfig}
+config_options ={"production":ProdConfig, "testing":TestConfig}
 
