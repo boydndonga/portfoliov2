@@ -3,6 +3,7 @@ import os
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CSRF_ENABLED = False
+    SECRET_KEY=os.urandom(24)
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DB')
