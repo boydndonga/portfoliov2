@@ -1,5 +1,9 @@
 from . import auth
 from .. import db
+from .forms import LoginForm
+from ..models import User
+from flask import render_template,redirect,url_for, flash,request
+from flask_login import login_user,logout_user,login_required
 
 
 @auth.route('/login',methods=['GET','POST'])
@@ -13,5 +17,5 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "watchlist login"
+    title = "Boyd login"
     return render_template('auth/login.html',login_form = login_form,title=title)
