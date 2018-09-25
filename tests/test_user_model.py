@@ -23,6 +23,10 @@ class UserModelTESTCase(unittest.TestCase):
         self.assertEqual(self.new_user.email,'boyde@gmaile.com')
 
     def test_no_password_getter(self):
-        # self.assertEqual(self.new_user.password,'boyde')
         with self.assertRaises(AttributeError):
             self.new_user.password
+
+    def test_save_user(self):
+        db.session.add(self.new_user)
+        db.session.commit()
+        self.assertTrue(len(User.query.all())>0)
