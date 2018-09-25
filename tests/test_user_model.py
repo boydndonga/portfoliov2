@@ -21,3 +21,6 @@ class UserModelTESTCase(unittest.TestCase):
     def test_user_instance_var(self):
         self.assertEqual(self.new_user.username,'boyde')
         self.assertEqual(self.new_user.email,'boyde@gmaile.com')
+
+    def test_no_password_getter(self):
+        self.assertEqual(self.new_user.password,'boyde')
