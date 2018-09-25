@@ -19,4 +19,5 @@ class UserModelTESTCase(unittest.TestCase):
         self.app_context.pop()
 
     def test_user_instance_var(self):
-        self.assertAlmostEquals(self.new_user.username,'boyde')
+        self.assertEqual(self.new_user.username,'boyde')
+        self.assertEqual(self.new_user.email,'boyde@gmaile.com')
