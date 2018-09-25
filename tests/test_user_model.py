@@ -15,3 +15,6 @@ class UserModelTESTCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
+
+    def test_user_instance(self):
+        pass
