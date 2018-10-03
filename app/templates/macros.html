@@ -1,5 +1,12 @@
 {% macro displayCategories(all_categories) %}
     {% for category in all_categories %}
-        <li><a href="#">{{ category.name }}</a></li>
+        <li><a href="{{url_for('main.category',id=category.id)}}">{{ category.name }}</a></li>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro displayCategoryProjects(all_projects) %}
+    {% for project in all_projects %}
+        <p>{{ project.title}}</p>
     {% endfor %}
 {% endmacro %}

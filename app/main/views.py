@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for,abort
 from . import main
 from .. import db
-from app.models import Category
+from app.models import Category,Project
 from flask_login import login_required, current_user
 from .forms import CategoryForm
 
@@ -27,4 +27,4 @@ def new_category():
 @main.route('/category/<int:id>')
 def category(id):
     projects = Project.get_projects(category_id)
-    return render_template('category.html',projects=projects)
+    return render_template('main/category.html',projects=projects)

@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+    {% if projects %}
+        {{ macro.displayCategoryProjects(all_projects)}}
+    {% else %}
+        <p>tuko kwa single cat</p>
+    {% endif %}
+    
+{% endblock %}
