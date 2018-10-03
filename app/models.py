@@ -5,13 +5,13 @@ from . import login_manager
 from datetime import datetime
 
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
-    projects = db.relationship('Project', backref='category', lazy='dynamic')
+    # projects = db.relationship('Project', backref='category', lazy='dynamic')
 
 
     def __repr__(self):
