@@ -11,6 +11,8 @@ class User(db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
+    projects = db.relationship('Project', backref='category', lazy='dynamic')
+
 
     def __repr__(self):
         return f'User {self.username}'
@@ -61,3 +63,4 @@ Class Project(db.model):
     description = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
