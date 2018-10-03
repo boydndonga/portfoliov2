@@ -23,3 +23,6 @@ def new_category():
         return redirect(url_for('.index'))
     
     return render_template('main/new_category.html', category_form=form)
+
+@main.route('/category/<int:id>')
+def category(id):
