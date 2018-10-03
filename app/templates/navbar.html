@@ -18,6 +18,13 @@
             </li>
             <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
             {% else %}
+            <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">categories
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                         {{macro.displayCategories(categories)}}
+                    </ul>
+            </li>
             <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
             {%endif%}
           </ul>

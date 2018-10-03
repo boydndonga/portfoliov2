@@ -7,7 +7,8 @@ from .forms import CategoryForm
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    categories = Category.get_categories()
+    return render_template('index.html',categories=categories)
 
 @main.route('/new_category', methods=['GET','POST'])
 @login_required

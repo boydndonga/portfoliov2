@@ -1,0 +1,5 @@
+{% macro displayCategories(all_categories) %}
+    {% for category in all_categories %}
+        <li><a href="#">{{ category.name }}</a></li>
+    {% endfor %}
+{% endmacro %}
