@@ -36,6 +36,7 @@ class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(50),unique = True,index = True)
+    projects = db.relationship('Project', backref='category', lazy='dynamic')
 
     def __repr__(self):
         return f'Category {self.name}'
@@ -52,3 +53,11 @@ class Category(db.Model):
     def get_categories(cls):
         categories = Category.query.all()
         return categories
+    
+Class Project(db.model):
+    __tablename__= 'projects'
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(250))
+    description = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
