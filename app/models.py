@@ -12,7 +12,6 @@ class User(db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
 
-
     def __repr__(self):
         return f'User {self.username}'
 
@@ -40,6 +39,10 @@ class Category(db.Model):
 
     def __repr__(self):
         return f'Category {self.name}'
+
+    def save_category(self):
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
     def get_categories(cls):

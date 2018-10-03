@@ -20,3 +20,8 @@ class CategoryModelTESTCase(unittest.TestCase):
 
     def test_category_instance_var(self):
         self.assertEqual(self.new_category.name,'networking')
+
+    def test_save_category_successful(self):
+        db.session.add(self.new_category)
+        db.session.commit()
+        self.assertTrue(len(Category.query.all())>0)
