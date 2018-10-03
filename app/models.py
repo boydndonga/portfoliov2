@@ -64,3 +64,20 @@ Class Project(db.model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
+
+    def save_project(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_project(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    # def update_project(self):
+    #     Project.query.filter_by(id).update()
+    #     db.session.commit()
+
+    @classmethod
+    def get_projects(cls):
+        projects = Project.query.all()
+        return projects
