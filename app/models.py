@@ -56,7 +56,7 @@ class Category(db.Model):
         categories = Category.query.all()
         return categories
     
-class Project(db.model):
+class Project(db.Model):
     __tablename__= 'projects'
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(250))
