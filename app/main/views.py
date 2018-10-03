@@ -9,16 +9,16 @@ from .forms import CategoryForm
 def index():
     return render_template('index.html')
 
-@main.route('/new_category')
+@main.route('/new_category', methods=['GET','POST'])
 @login_required
 def new_category():
-    form = CategoryForm()
+    form = CategoryForm()  
     if form.validate_on_submit():
         name = form.name.data
 
         new_category=Category(name=name)
 
         new_category.save_category()
-        return redirect(url_for('.new_category'))
+        return redirect(url_for('.index'))
     
-    return render_template('main/new_review.html')
+    return render_template('main/new_category.html', category_form=form)
