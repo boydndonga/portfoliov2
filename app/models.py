@@ -51,6 +51,9 @@ class Category(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    # def load_category(id):
+    #     return Category.query.get(int(id))
+
     @classmethod
     def get_categories(cls):
         categories = Category.query.all()
@@ -76,6 +79,11 @@ class Project(db.Model):
     # def update_project(self):
     #     Project.query.filter_by(id).update()
     #     db.session.commit()
+
+    @classmethod
+    def get_projects(cls,id):
+        projects = Project.query.filter_by(category_id=id).all()
+        return projects
 
     @classmethod
     def get_projects(cls):

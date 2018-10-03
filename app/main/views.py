@@ -26,3 +26,5 @@ def new_category():
 
 @main.route('/category/<int:id>')
 def category(id):
+    projects = Project.get_projects(category_id)
+    return render_template('category.html',projects=projects)
