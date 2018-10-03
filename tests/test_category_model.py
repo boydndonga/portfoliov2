@@ -25,3 +25,10 @@ class CategoryModelTESTCase(unittest.TestCase):
         db.session.add(self.new_category)
         db.session.commit()
         self.assertTrue(len(Category.query.all())>0)
+
+    def test_delete_category(self):
+        db.session.add(self.new_category)
+        db.session.commit()
+        db.session.delete(self.new_category)
+        db.session.commit()
+        self.assertTrue(len(Category.query.all())<1)

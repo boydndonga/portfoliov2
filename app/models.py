@@ -44,6 +44,10 @@ class Category(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete_category(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def get_categories(cls):
         categories = Category.query.all()
