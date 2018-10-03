@@ -38,4 +38,9 @@ class Category(db.Model):
     name = db.Column(db.String(50),unique = True,index = True)
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'Category {self.name}'
+
+    @classmethod
+    def get_categories(cls):
+        categories = Category.query.all()
+        return categories
