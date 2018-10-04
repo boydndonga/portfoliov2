@@ -44,5 +44,5 @@ def new_project():
         new_project = Project(title=title, description=description,
                         user_id=current_user.id,category_id=form.category.data)
         new_project.save_project()
-        return redirect(url_for('.index'))
+        return redirect(url_for('.category'))
     return render_template('main/new_project.html', project_form=form)
