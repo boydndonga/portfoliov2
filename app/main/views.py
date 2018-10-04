@@ -37,5 +37,12 @@ def new_project():
     form = ProjectForm(request.form)
     form.category.choices = categories
     if form.validate_on_submit():
-        pass
+        title = form.title.data
+        description = form.description.data
+        category = form.category.data
+
+        new_project = Project(title=title, description=description,
+                        user_id = current_user.id,category=category)
+        new_project.save_project()
+        return redirect(url_for('.index'))
     return render_template('main/new_project.html', project_form=form)
