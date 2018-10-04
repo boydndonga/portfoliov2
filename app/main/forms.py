@@ -8,7 +8,7 @@ class CategoryForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class ProjectForm(FlaskForm):
-    title = StringField('Category name', validators=[Required()])
+    title = StringField('Project name', validators=[Required()])
     description = TextAreaField('Description', validators=[Required()])
     category = SelectField('Category', choices=[], coerce=int)
     submit = SubmitField('Submit')

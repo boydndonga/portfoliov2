@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for,abort
 from . import main
 from .. import db
 from app.models import Category,Project
-from flask_login import login_required, current_user
+from flask_login import login_required,current_user
 from .forms import CategoryForm,ProjectForm
 
 @main.route('/')
@@ -42,7 +42,7 @@ def new_project():
         category = form.category.data
 
         new_project = Project(title=title, description=description,
-                        user_id = current_user.id,category=category)
+                        user_id=current_user.id,category_id=form.category.data)
         new_project.save_project()
         return redirect(url_for('.index'))
     return render_template('main/new_project.html', project_form=form)
