@@ -51,8 +51,9 @@ class Category(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    # def load_category(id):
-    #     return Category.query.get(int(id))
+    @classmethod
+    def load_category(cls,id):
+        return Category.query.get(int(id))
 
     @classmethod
     def get_categories(cls):

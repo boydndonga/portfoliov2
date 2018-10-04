@@ -3,7 +3,7 @@ from . import main
 from .. import db
 from app.models import Category,Project
 from flask_login import login_required, current_user
-from .forms import CategoryForm
+from .forms import CategoryForm,ProjectForm
 
 @main.route('/')
 def index():
@@ -26,5 +26,16 @@ def new_category():
 
 @main.route('/category/<int:id>')
 def category(id):
-    projects = Project.get_projects(category_id)
+    category = Category.load_category(id)
+    projects = category.projects()
     return render_template('main/category.html',projects=projects)
+
+@main.route('/new_project', methods=['GET','POST'])
+@login_required
+def new_project():
+    categories = [(c.id, c.name) for c in Category.get_categories()]
+    form = ProjectForm(request.form)
+    form.category.choices = categories
+    if form.validate_on_submit():
+        pass
+    return render_template('main/new_project.html', project_form=form)
