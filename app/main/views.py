@@ -26,8 +26,9 @@ def new_category():
 
 @main.route('/category/<int:id>')
 def category(id):
-    category = Category.load_category(id)
-    projects = category.projects()
+    # category = Category.load_category(id)
+    # projects = category.projects()
+    projects = Project.query.filter_by(category_id=id).all()
     return render_template('main/category.html',projects=projects)
 
 @main.route('/new_project', methods=['GET','POST'])
@@ -44,5 +45,5 @@ def new_project():
         new_project = Project(title=title, description=description,
                         user_id=current_user.id,category_id=form.category.data)
         new_project.save_project()
-        return redirect(url_for('.category'))
+        return redirect(url_for('.category',id=form.category.data))
     return render_template('main/new_project.html', project_form=form)
