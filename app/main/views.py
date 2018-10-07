@@ -26,10 +26,10 @@ def new_category():
 
 @main.route('/category/<int:id>')
 def category(id):
-    # category = Category.load_category(id)
-    # projects = category.projects()
+    categories = Category.get_categories()
+    category = Category.load_category(id)
     projects = Project.query.filter_by(category_id=id).all()
-    return render_template('main/category.html',projects=projects)
+    return render_template('main/category.html',projects=projects,category=category,categories=categories)
 
 @main.route('/new_project', methods=['GET','POST'])
 @login_required

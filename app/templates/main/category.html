@@ -2,6 +2,7 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
+    {{ category.name }}
     {% if projects %}
         {{ macro.displayCategoryProjects(projects)}}
     {% else %}
