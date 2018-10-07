@@ -2,11 +2,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <!-- <a class="navbar-brand" href="#">Boyd</a> -->
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="{{url_for('main.index')}}">Portfolio</a></li>
+            </ul>
           </div>
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="{{url_for('main.index')}}">Portfolio</a></li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if current_user.is_authenticated %}
             <li style="color:yellowgreen;padding:15px;">{{current_user.username}}</li>
