@@ -11,7 +11,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
-    # projects = db.relationship('Project', backref='category', lazy='dynamic')
+    projects = db.relationship('Project', backref='category', lazy='dynamic')
 
 
     def __repr__(self):
@@ -81,10 +81,10 @@ class Project(db.Model):
     #     Project.query.filter_by(id).update()
     #     db.session.commit()
 
-    @classmethod
-    def get_projects(cls,id):
-        projects = Project.query.filter_by(category_id=id).all()
-        return projects
+    # @classmethod
+    # def get_projects(cls,id):
+    #     projects = Project.query.filter_by(category_id=id).all()
+    #     return projects
 
     @classmethod
     def get_projects(cls):
