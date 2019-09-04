@@ -14,7 +14,7 @@ class ProjectModelTESTCase(unittest.TestCase):
         self.new_user = User(username='boyde', email='boyde@gmaile.com', password='walaisijui')
         self.new_category = Category(name='networking')
         self.new_project = Project(title='projo', description='ufala mob tu',
-                            timestamp=datetime.utcnow,user=self.new_user,category=self.new_category)
+                            timestamp=datetime.utcnow,user_id=self.new_user.id,category=self.new_category)
         db.create_all()
 
     def tearDown(self):
@@ -26,5 +26,5 @@ class ProjectModelTESTCase(unittest.TestCase):
         self.assertEqual(self.new_project.title,'projo')
         self.assertEqual(self.new_project.description,'ufala mob tu')
         self.assertEqual(self.new_project.timestamp,datetime.utcnow)
-        self.assertEqual(self.new_project.user,self.new_user)
+        self.assertEqual(self.new_project.user_id,self.new_user)
         self.assertEqual(self.new_project.category,self.new_category)
